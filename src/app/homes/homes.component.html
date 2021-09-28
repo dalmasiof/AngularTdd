@@ -1,0 +1,9 @@
+<div class="homes">
+    <div data-test="home" *ngFor="let h of home$ |async">
+
+        <p name="title" class="title">{{h.title}}</p>
+        <p name="price" class="price">{{h.price}}</p>
+        <p   name="country" class="country">{{h.country}}</p>
+
+    </div>
+</div>
