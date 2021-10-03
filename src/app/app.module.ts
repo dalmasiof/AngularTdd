@@ -8,6 +8,7 @@ import { HomesComponent } from './homes/homes.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatDialogModule} from '@angular/material/dialog';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { DetailsComponent } from './details/details.component';
 import { FormsModule } from '@angular/forms';
 
@@ -24,8 +25,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    FormsModule 
-
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

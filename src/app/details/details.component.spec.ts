@@ -5,6 +5,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { spyOnClass } from 'jasmine-es6-spies';
 
@@ -14,7 +15,8 @@ describe('DetailsComponent', () => {
   let component: DetailsComponent;
   let fixture: ComponentFixture<DetailsComponent>;
   let dialogData;
-  let matDialogRef:MatDialogRef<DetailsComponent>
+  let matDialogRef: MatDialogRef<DetailsComponent>;
+  let snackBar: MatSnackBar;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -23,6 +25,7 @@ describe('DetailsComponent', () => {
       providers: [
         { provide: MAT_DIALOG_DATA, useValue: {} },
         { provide: MatDialogRef, useFactory: () => spyOnClass(MatDialogRef) },
+        { provide: MatSnackBar, useFactory: () => spyOnClass(MatSnackBar) },
       ],
     }).compileComponents();
   });
@@ -32,6 +35,7 @@ describe('DetailsComponent', () => {
     component = fixture.componentInstance;
     dialogData = TestBed.inject(MAT_DIALOG_DATA);
     matDialogRef = TestBed.inject(MatDialogRef);
+    snackBar = TestBed.inject(MatSnackBar);
     dialogData.home = {};
 
     fixture.detectChanges();
@@ -72,56 +76,54 @@ describe('DetailsComponent', () => {
   });
 
   it('should not render book button', () => {
-
-    expect(
-        fixture.nativeElement.querySelector('[data-test="bookBtn"]')
-      ).toBe(null);
-    
-
+    expect(fixture.nativeElement.querySelector('[data-test="bookBtn"]')).toBe(
+      null
+    );
   });
 
-  it('should  render book button', () => {    
+  it('should  render book button', () => {
     component.day = 2;
-    fixture.detectChanges()
+    fixture.detectChanges();
     expect(
       fixture.nativeElement.querySelector('[data-test="bookBtn"]')
     ).toBeTruthy();
-
   });
 
-  it('should calculate the total based on days*price',()=>{
-    
+  it('should calculate the total based on days*price', () => {
     let days = 2;
-    let price = "200";
+    let price = '200';
 
-    let result = component.calculateTotal(days,price);
+    let result = component.calculateTotal(days, price);
 
     expect(result).toEqual(400);
-  })
+  });
 
-  it('should calculate the total based on days*price using decimal',()=>{
-    
+  it('should calculate the total based on days*price using decimal', () => {
     let days = 2;
-    let price = "100.50";
+    let price = '100.50';
 
-    let result = component.calculateTotal(days,price);
+    let result = component.calculateTotal(days, price);
 
     expect(result).toEqual(201);
-  })
+  });
 
-  it('should not calculat if days < 0',()=>{
-    
+  it('should not calculat if days < 0', () => {
     let days = -2;
-    let price = "100";
+    let price = '100';
 
-    let result = component.calculateTotal(days,price);
+    let result = component.calculateTotal(days, price);
 
     expect(result).toEqual(0);
-  })
+  });
 
-  it('should close the dialog',()=>{
+  it('should close the dialog', () => {
     component.closeDialog();
-
+    expect(snackBar.open).toHaveBeenCalled();
     expect(matDialogRef.close).toHaveBeenCalled();
-  })
+  });
+
+  it('should show snack-bar', () => {
+    component.showSnackBar();
+    expect(snackBar.open).toHaveBeenCalled();
+  });
 });
