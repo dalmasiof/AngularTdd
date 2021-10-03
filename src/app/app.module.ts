@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatDialogModule} from '@angular/material/dialog';
 import { DetailsComponent } from './details/details.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { DetailsComponent } from './details/details.component';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule 
 
   ],
   providers: [HttpClientModule],

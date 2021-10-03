@@ -14,6 +14,7 @@ describe('DetailsComponent', () => {
   let component: DetailsComponent;
   let fixture: ComponentFixture<DetailsComponent>;
   let dialogData;
+  let matDialogRef:MatDialogRef<DetailsComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -30,9 +31,8 @@ describe('DetailsComponent', () => {
     fixture = TestBed.createComponent(DetailsComponent);
     component = fixture.componentInstance;
     dialogData = TestBed.inject(MAT_DIALOG_DATA);
+    matDialogRef = TestBed.inject(MatDialogRef);
     dialogData.home = {};
-
-
 
     fixture.detectChanges();
   });
@@ -59,15 +59,59 @@ describe('DetailsComponent', () => {
     ).toBeTruthy();
   });
 
-  it('it should render input entry', () => {
+  it('should render input days', () => {
     expect(
-      fixture.nativeElement.querySelector('[data-test="entry"]')
+      fixture.nativeElement.querySelector('[data-test="days"]')
     ).toBeTruthy();
   });
 
-  it('it should input exit', () => {
+  it('should render total value', () => {
     expect(
-      fixture.nativeElement.querySelector('[data-test="exit"]')
+      fixture.nativeElement.querySelector('[data-test="totalValue"]')
     ).toBeTruthy();
   });
+
+  it('should render book button', () => {
+    if(component.day>0){
+      expect(
+        fixture.nativeElement.querySelector('[data-test="bookBtn"]')
+      ).toBeTruthy();
+    }
+  });
+
+  it('should calculate the total based on days*price',()=>{
+    
+    let days = 2;
+    let price = "200";
+
+    let result = component.calculateTotal(days,price);
+
+    expect(result).toEqual(400);
+  })
+
+  it('should calculate the total based on days*price using decimal',()=>{
+    
+    let days = 2;
+    let price = "100.50";
+
+    let result = component.calculateTotal(days,price);
+
+    expect(result).toEqual(201);
+  })
+
+  it('should not calculat if days < 0',()=>{
+    
+    let days = -2;
+    let price = "100";
+
+    let result = component.calculateTotal(days,price);
+
+    expect(result).toEqual(0);
+  })
+
+  it('should close the dialog',()=>{
+    component.closeDialog();
+
+    expect(matDialogRef.close).toHaveBeenCalled();
+  })
 });

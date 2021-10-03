@@ -2,11 +2,18 @@
 
     <p data-test="title">Title: {{objModel.title}}</p>    
     <p data-test="location">Location: {{objModel.location}}</p>
-
-    <input data-test="entry" placeholder="data entry">
-    <input data-test="exit" placeholder="data exit">
-
     <p data-test="price">Price: {{objModel.price}}</p>
 
+    <input data-test="days"  type="number" placeholder="Days expend" [(ngModel)]="day">
+    
+    
+    <p *ngIf="day<=0" data-test="totalValue">Total: -- </p>
+
+    <ng-container *ngIf="day>0">
+       
+        <p data-test="totalValue">Total: $ {{calculateTotal(day,objModel.price)}}</p>
+        <button data-test="bookBtn" (click)="closeDialog()">Book</button>
+
+    </ng-container>
 
 </div>
