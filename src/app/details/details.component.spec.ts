@@ -71,12 +71,22 @@ describe('DetailsComponent', () => {
     ).toBeTruthy();
   });
 
-  it('should render book button', () => {
-    if(component.day>0){
-      expect(
+  it('should not render book button', () => {
+
+    expect(
         fixture.nativeElement.querySelector('[data-test="bookBtn"]')
-      ).toBeTruthy();
-    }
+      ).toBe(null);
+    
+
+  });
+
+  it('should  render book button', () => {    
+    component.day = 2;
+    fixture.detectChanges()
+    expect(
+      fixture.nativeElement.querySelector('[data-test="bookBtn"]')
+    ).toBeTruthy();
+
   });
 
   it('should calculate the total based on days*price',()=>{

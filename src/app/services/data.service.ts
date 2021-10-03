@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 })
 export class DataService {
 
-  constructor(private httpclient:HttpClient) {}
+  constructor() {}
 
 
   getHomes$() {
