@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { DataService } from '../data.service';
+import { DataService } from '../services/data.service';
+import { DialogService } from '../services/dialog.service';
 
 @Component({
   selector: 'app-homes',
@@ -10,11 +11,15 @@ import { DataService } from '../data.service';
 export class HomesComponent implements OnInit {
   home$!: Observable<any[]>;
 
-  constructor(private dataService:DataService) {}
+  constructor(private dataService:DataService, private dialogSvc:DialogService) {}
 
   ngOnInit(): void {
     
 
     this.home$ = this.dataService.getHomes$();
+  }
+
+  public openDialog(){
+    this.dialogSvc.open()
   }
 }

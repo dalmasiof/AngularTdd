@@ -11,7 +11,7 @@ export class DataService {
 
 
   getHomes$() {
-    debugger
+    
     return of([
       {
         "title": "Home 1",
@@ -33,5 +33,5 @@ export class DataService {
       }
     ])
 
-  }
+  } 
 }
