@@ -9,8 +9,10 @@ export class DialogService {
 
   constructor(private dialog:MatDialog) { }
 
-  open(){
-    this.dialog.open(DetailsComponent);
+  open(info:any){
+    this.dialog.open(DetailsComponent,{
+      data:info
+    });
   }
 
 

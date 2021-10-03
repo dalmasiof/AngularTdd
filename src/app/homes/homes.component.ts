@@ -19,7 +19,7 @@ export class HomesComponent implements OnInit {
     this.home$ = this.dataService.getHomes$();
   }
 
-  public openDialog(){
-    this.dialogSvc.open()
+  public openDialog(info:any){
+    this.dialogSvc.open(info)
   }
 }

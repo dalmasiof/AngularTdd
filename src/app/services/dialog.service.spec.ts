@@ -28,7 +28,13 @@ describe('DialogService', () => {
 
   it('should open the dialog',()=>{
 
-    service.open();
+    let mockHome={
+      "title": "Home 1",
+      "image": "assets/listing.jpg",
+      "location": "new york",
+      "price": "125"
+    }
+    service.open(mockHome);
     expect(matDialog.open).toHaveBeenCalled();
 
 
