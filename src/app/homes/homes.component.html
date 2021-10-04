@@ -1,14 +1,20 @@
 <div class="homes">
-    <div data-test="home" *ngFor="let h of home$ |async">
+  <mat-card data-test="home" *ngFor="let h of home$ | async">
+    <mat-card-header>
+      <mat-card-title name="title" class="title">{{ h.title }}</mat-card-title>
+      <mat-card-subtitle>On-Sale</mat-card-subtitle>
+    </mat-card-header>
 
-        <p name="title" class="title">{{h.title}}</p>
-        <p name="price" class="price">{{h.price}}</p>
-        <p   name="country" class="country">{{h.country}}</p>
-        <p>
-            <button data-test="btnDialog" (click)="openDialog(h)">
-                more info
-            </button>
-        </p>
+    <mat-card-content class="content">
+      <p  name="title" class="title">{{ h.title }}</p>
+      <p  name="price" class="price">{{ h.price }}</p>
+      <p  name="country" class="country">{{ h.country }}</p>
+    </mat-card-content>
 
-    </div>
+    <mat-card-actions class="card--actions">
+      <button mat-button data-test="btnDialog" (click)="openDialog(h)">
+        more info
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </div>

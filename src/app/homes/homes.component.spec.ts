@@ -14,7 +14,7 @@ describe('HomesComponent', () => {
   var component: HomesComponent;
   var fixture: ComponentFixture<HomesComponent>;
 
-  let dialogService: DialogService;  // let dataService:jasmine.SpyObj<DataService>;
+  let dialogService: DialogService; // let dataService:jasmine.SpyObj<DataService>;
 
   let homesList: any[] = [];
 
@@ -22,8 +22,10 @@ describe('HomesComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [HomesComponent],
       imports: [HttpClientModule, MatDialogModule, BrowserAnimationsModule],
-      providers: [DialogService,
-        { provide: DialogService, useFactory: () => spyOnClass(DialogService) }],
+      providers: [
+        DialogService,
+        { provide: DialogService, useFactory: () => spyOnClass(DialogService) },
+      ],
     }).compileComponents();
   });
 
@@ -35,7 +37,6 @@ describe('HomesComponent', () => {
     homesList = fixture.nativeElement.querySelectorAll('[data-test = "home"]');
 
     dialogService = TestBed.inject(DialogService);
-
   });
 
   it('should create', () => {
@@ -49,36 +50,33 @@ describe('HomesComponent', () => {
   });
 
   it('should have homes title', () => {
-    // debugger
-
     homesList = fixture.nativeElement.querySelectorAll('[data-test = "home"]');
     for (let i = 0; i < homesList.length; i++) {
-      let elChildren = homesList[i].children as HTMLCollection;
-      let childrenClassName = elChildren.namedItem('title')?.className;
-
-      expect(childrenClassName == 'title').toBeTruthy();
+      let elChildren = homesList[i].children[1] as HTMLElement;
+      var HTMLnode:any 
+      HTMLnode = elChildren.childNodes[0]
+      expect(HTMLnode).toBeTruthy();
     }
   });
 
   it('should have homes price', () => {
+    
     homesList = fixture.nativeElement.querySelectorAll('[data-test = "home"]');
     for (let i = 0; i < homesList.length; i++) {
-      let elChildren = homesList[i].children as HTMLCollection;
-      let childrenClassName = elChildren.namedItem('price')?.className;
-
-      expect(childrenClassName == 'price').toBeTruthy();
+      let elChildren = homesList[i].children[1] as HTMLElement;
+      var HTMLnode:any 
+      HTMLnode = elChildren.childNodes[1]
+      expect(HTMLnode).toBeTruthy();
     }
   });
 
   it('should have homes country', () => {
-    let homesList = fixture.nativeElement.querySelectorAll(
-      '[data-test = "home"]'
-    );
+    homesList = fixture.nativeElement.querySelectorAll('[data-test = "home"]');
     for (let i = 0; i < homesList.length; i++) {
-      let elChildren = homesList[i].children as HTMLCollection;
-      let childrenClassName = elChildren.namedItem('country')?.className;
-
-      expect(childrenClassName == 'country').toBeTruthy();
+      let elChildren = homesList[i].children[1] as HTMLElement;
+      var HTMLnode:any 
+      HTMLnode = elChildren.childNodes[2]
+      expect(HTMLnode).toBeTruthy();
     }
   });
 
@@ -93,6 +91,5 @@ describe('HomesComponent', () => {
     btn.click();
 
     expect(dialogService.open).toHaveBeenCalled();
-
   });
 });

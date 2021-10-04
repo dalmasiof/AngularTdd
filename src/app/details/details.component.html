@@ -1,19 +1,26 @@
 <div>
+  <p data-test="title">Title: {{ objModel.title }}</p>
+  <p data-test="location">Location: {{ objModel.location }}</p>
+  <p data-test="price">Price: {{ objModel.price }}</p>
 
-    <p data-test="title">Title: {{objModel.title}}</p>    
-    <p data-test="location">Location: {{objModel.location}}</p>
-    <p data-test="price">Price: {{objModel.price}}</p>
+  <input
+    data-test="days"
+    type="number"
+    placeholder="Days expend"
+    min="0"
+    [(ngModel)]="day"
+  />
 
-    <input data-test="days"  type="number" placeholder="Days expend" [(ngModel)]="day">
-    
-    
-    <p *ngIf="day<=0" data-test="totalValue">Total: -- </p>
+  <p *ngIf="day <= 0" data-test="totalValue">Total: --</p>
 
-    <ng-container *ngIf="day>0">
-       
-        <p data-test="totalValue">Total: $ {{calculateTotal(day,objModel.price)}}</p>
-        <button data-test="bookBtn" (click)="closeDialog()">Book</button>
-
-    </ng-container>
-
+  <ng-container *ngIf="day > 0" >
+    <div style="display: flex; flex-direction: column; ">
+      <p data-test="totalValue">
+        Total: $ {{ calculateTotal(day, objModel.price) }}
+      </p>
+      <button mat-button data-test="bookBtn" (click)="closeDialog()">
+        Book
+      </button>
+    </div>
+  </ng-container>
 </div>
