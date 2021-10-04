@@ -1,22 +1,39 @@
 <nav>
-  <ul>
-    <li>
-      <img class="logo" data-test="logo" src="assets/angulrLogo.svg" />
-    </li>
-    <li>
-      <input class="start" data-test="search" placeholder="Search..." />
-    </li>
-    <li>
-      <button data-test="becomeHost" >Become a host</button>
-    </li>
-    <li>
-      <button data-test="help" placeholder="Search...">Help</button>
-    </li>
-    <li>
-      <button data-test="signUp" placeholder="Search...">Sign Up</button>
-    </li>
-    <li>
-      <button data-test="login" placeholder="Search...">Login</button>
-    </li>
-  </ul>
+  <div class="nav">
+    <ul class="--firstEl">
+      <li class="--imgLogo">
+        <img  data-test="logo" src="assets/angulrLogo.svg" />
+      </li>
+      <li>
+        <mat-form-field >
+          <input 
+            matInput
+            class="start"
+            data-test="search"
+            placeholder="Search..."
+          />
+        </mat-form-field>
+      </li>
+    </ul>
+    <ul class="--lastEl">
+      <li>
+        <button mat-button data-test="becomeHost">Become a host</button>
+      </li>
+      <li>
+        <button mat-button data-test="help" placeholder="Search...">
+          Help
+        </button>
+      </li>
+      <li>
+        <button mat-button data-test="signUp" placeholder="Search...">
+          Sign Up
+        </button>
+      </li>
+      <li>
+        <button mat-button data-test="login" placeholder="Search...">
+          Login
+        </button>
+      </li>
+    </ul>
+  </div>
 </nav>

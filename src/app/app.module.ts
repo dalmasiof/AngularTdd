@@ -11,6 +11,11 @@ import { MatDialogModule} from '@angular/material/dialog';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { DetailsComponent } from './details/details.component';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule} from '@angular/material/input';
+
+
 
 
 @NgModule({
@@ -22,11 +27,14 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatButtonModule,
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
