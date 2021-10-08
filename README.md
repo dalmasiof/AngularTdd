@@ -1,3 +1,11 @@
+# Angular Web App
+This project wa made with the intention to be at 100% tested.
+
+It have 100% of the line coverade by unit tests with Karma and Jasmine and e2e tests made with CyPress.
+
+code coverage:
+<img src"print/codeCoverage.png">
+
 # AngularTdd
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
