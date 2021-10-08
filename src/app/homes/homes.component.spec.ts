@@ -86,7 +86,7 @@ describe('HomesComponent', () => {
     ).toBeTruthy();
   });
 
-  it('should open the dialog', () => {
+  it('should call the dialog service', () => {
     var btn = fixture.nativeElement.querySelector('[data-test="btnDialog"]');
     btn.click();
 
