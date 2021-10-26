@@ -1,3 +1,7 @@
+# Angular TDD
+
+This project was made using TDD. Writing the test for the funcionality, Fail the test. Write funcionality to pass in the test.
+
 # Angular Web App
 This project wa made with the intention to be at 100% tested.
 
